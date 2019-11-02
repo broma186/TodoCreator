@@ -2,6 +2,7 @@ package com.example.todocreator.di.module
 
 import com.example.todocreator.api.TodoService
 import com.example.todocreator.utils.BASE_URL
+import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -11,6 +12,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+@Module
 class NetworkModule {
 
     companion object {

@@ -3,12 +3,16 @@ package com.example.todocreator
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.todocreator.adapters.TodoListAdapter
 import com.example.todocreator.databinding.ActivityTodoBinding
+import com.example.todocreator.viewmodels.TodoListViewModel
 import com.example.todocreator.viewmodels.TodoViewModel
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
@@ -30,8 +34,9 @@ class TodoActivity : AppCompatActivity(), HasAndroidInjector, SwipeRefreshLayout
 
     val context: Context = this
     lateinit var binding: ActivityTodoBinding
+    private lateinit var adapter: TodoListAdapter
 
-    private lateinit var todoViewModel : TodoViewModel
+    private lateinit var todoViewModel : TodoListViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,15 +49,27 @@ class TodoActivity : AppCompatActivity(), HasAndroidInjector, SwipeRefreshLayout
         binding.todoSwipeRefresh
 
         // Initialize the to do view model using injected viewModelFactory.
-        todoViewModel = ViewModelProviders.of(this, viewModelFactory)[TodoViewModel::class.java]
+        todoViewModel = ViewModelProviders.of(this, viewModelFactory)[TodoListViewModel::class.java]
 
+        setupTodoList()
 
+        observeList()
     }
 
     fun setupTodoList() {
-       // binding.todoList.layoutManager = LinearLayoutManager(this)
-        //adapter = RepositoriesAdapter()
-       // binding.todoList.adapter = adapter
+        binding.todoList.layoutManager = LinearLayoutManager(this)
+        adapter = TodoListAdapter()
+        binding.todoList.adapter = adapter
+    }
+
+    fun observeList() {
+        todoViewModel.todoLiveData.observe(this, Observer {
+                result ->
+            if (!result.isNullOrEmpty()) {
+                binding.noTodos.visibility = View.GONE
+            }
+            adapter.submitList(result)
+        })
     }
 
     override fun onRefresh() {

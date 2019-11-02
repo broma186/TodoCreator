@@ -3,6 +3,9 @@
 
     <data>
         <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+        <variable
             name="viewModel"
             type="com.example.todocreator.viewmodels.TodoViewModel" />
     </data>
