@@ -21,7 +21,6 @@ All the dagger modules needed for DI.
         AppModule::class,
         ViewModelModule::class,
         NetworkModule::class,
-        RepositoryModule::class,
         TodoDbModule::class
     ]
 )

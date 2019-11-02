@@ -32,6 +32,7 @@
                 android:textSize="18sp"
                 android:text="@{viewModel.name}"
                 android:onClick="@{clickListener}"
+                android:layout_marginRight="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,6 +44,7 @@
                 android:textSize="18sp"
                 android:text="@{viewModel.status}"
                 android:onClick="@{clickListener}"
+                android:layout_marginRight="20dp"
                 app:layout_constraintStart_toEndOf="@+id/name"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -55,6 +57,7 @@
                 android:textSize="18sp"
                 android:text="@{viewModel.expiryDate}"
                 android:onClick="@{clickListener}"
+                android:layout_marginRight="20dp"
                 app:layout_constraintStart_toEndOf="@+id/status"
                 app:layout_constraintTop_toTopOf="parent"/>
 

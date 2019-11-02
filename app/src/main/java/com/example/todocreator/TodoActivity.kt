@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.todocreator.adapters.TodoListAdapter
 import com.example.todocreator.databinding.ActivityTodoBinding
@@ -54,6 +55,18 @@ class TodoActivity : AppCompatActivity(), HasAndroidInjector, SwipeRefreshLayout
         setupTodoList()
 
         observeList()
+
+        binding.todoList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
+
     }
 
     fun setupTodoList() {
