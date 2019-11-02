@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TodoCreator</string>
+    <string name="no_todos">Loading Todos</string>
 </resources>

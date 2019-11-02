@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey
 )
 
 data class Todo (
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int,
+    @PrimaryKey @ColumnInfo(name = "id") val id: Int,
     @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "status") val status: String?,
     @ColumnInfo(name = "expiry_date") val expiryDate: String?,
