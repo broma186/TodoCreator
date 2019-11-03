@@ -21,6 +21,7 @@ buildscript {
         coreTestingVersion = '2.0.0'
         truthVersion = '0.42'
         junitVersion = '4.12'
+        pagingVersion = "2.1.0"
     }
 
     repositories {
